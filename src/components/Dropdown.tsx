@@ -1,5 +1,8 @@
 import React, { useState } from "react"
+import { GoChevronDown, GoChevronLeft } from "react-icons/go"
+
 import "./Dropdown.css"
+import Panel from "./Panel.tsx"
 export interface Option {
 	label: string
 	value: string
@@ -27,7 +30,7 @@ function Dropdown({ options, selection, onSelect }: Props) {
 		return options.map((option, index) => {
 			return (
 				<div
-					className='header'
+					className='option'
 					key={option.value}
 					onClick={() => handleOptionClick(option)}
 				>
@@ -36,16 +39,16 @@ function Dropdown({ options, selection, onSelect }: Props) {
 			)
 		})
 	}
-	console.log("selection", selection)
 	return (
 		<div className='container'>
-			<div
-				className='subitem'
+			<Panel
+				styleName='header'
 				onClick={handleClick}
 			>
 				{selection?.label || "Select..."}
-			</div>
-			{isOpen && <div>{renderedOptions()}</div>}
+				{isOpen ? <GoChevronDown /> : <GoChevronLeft />}
+			</Panel>
+			{isOpen && <Panel styleName='sub-container'>{renderedOptions()}</Panel>}
 		</div>
 	)
 }
