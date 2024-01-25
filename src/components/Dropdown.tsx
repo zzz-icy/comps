@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import "./Dropdown.css"
 export interface Option {
 	label: string
 	value: string
@@ -27,6 +27,7 @@ function Dropdown({ options, selection, onSelect }: Props) {
 		return options.map((option, index) => {
 			return (
 				<div
+					className='header'
 					key={option.value}
 					onClick={() => handleOptionClick(option)}
 				>
@@ -37,8 +38,13 @@ function Dropdown({ options, selection, onSelect }: Props) {
 	}
 	console.log("selection", selection)
 	return (
-		<div style={{}}>
-			<div onClick={handleClick}>{selection?.label || "Select..."}</div>
+		<div className='container'>
+			<div
+				className='subitem'
+				onClick={handleClick}
+			>
+				{selection?.label || "Select..."}
+			</div>
 			{isOpen && <div>{renderedOptions()}</div>}
 		</div>
 	)
