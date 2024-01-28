@@ -1,6 +1,6 @@
 import Dropdown, { Option } from "./components/Dropdown.tsx"
 import "./index.css"
-import React, { useState } from "react"
+import React, { SyntheticEvent, useEffect, useRef, useState } from "react"
 function App() {
 	const options = [
 		{ label: "Red", value: "red" },
@@ -12,13 +12,20 @@ function App() {
 	const handleSelection = (newSelection: Option) => {
 		setSelection(newSelection)
 	}
+	const dropdownRef = useRef(Dropdown)
+
 	return (
-		<div style={{}}>
+		<div style={{ display: "flex" }}>
 			<Dropdown
 				options={options}
 				selection={selection}
 				onSelect={handleSelection}
 			/>
+			{/* <Dropdown
+				options={options}
+				selection={selection}
+				onSelect={handleSelection}
+			/> */}
 		</div>
 	)
 }

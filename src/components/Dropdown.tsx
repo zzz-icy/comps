@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { GoChevronDown, GoChevronLeft } from "react-icons/go"
 
 import "./Dropdown.css"
@@ -16,10 +16,24 @@ interface Props {
 
 function Dropdown({ options, selection, onSelect }: Props) {
 	const [isOpen, setIsOpen] = useState<boolean>()
+	const divRef = useRef<HTMLDivElement>()
 
 	const handleClick = () => {
 		setIsOpen((currentIsOpen) => !currentIsOpen)
 	}
+
+	useEffect(() => {
+		const handler = (e: MouseEvent) => {
+			if (divRef.current && !divRef.current.contains(e.target)) {
+				setIsOpen(false)
+			}
+		}
+		document.addEventListener("click", handler, true)
+
+		return () => {
+			document.removeEventListener("click", handler)
+		}
+	}, [])
 
 	const handleOptionClick = (value: Option) => {
 		setIsOpen(false)
@@ -30,6 +44,7 @@ function Dropdown({ options, selection, onSelect }: Props) {
 		return options.map((option, index) => {
 			return (
 				<div
+					ref={divRef}
 					className='option'
 					key={option.value}
 					onClick={() => handleOptionClick(option)}
