@@ -12,7 +12,6 @@ function App() {
 	const handleSelection = (newSelection: Option) => {
 		setSelection(newSelection)
 	}
-	const dropdownRef = useRef(Dropdown)
 
 	return (
 		<div style={{ display: "flex" }}>
@@ -21,11 +20,11 @@ function App() {
 				selection={selection}
 				onSelect={handleSelection}
 			/>
-			{/* <Dropdown
+			<Dropdown
 				options={options}
 				selection={selection}
 				onSelect={handleSelection}
-			/> */}
+			/>
 		</div>
 	)
 }

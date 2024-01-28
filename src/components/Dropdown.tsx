@@ -16,15 +16,18 @@ interface Props {
 
 function Dropdown({ options, selection, onSelect }: Props) {
 	const [isOpen, setIsOpen] = useState<boolean>()
-	const divRef = useRef<HTMLDivElement>()
+	const divRef = useRef<HTMLDivElement>(null)
 
 	const handleClick = () => {
 		setIsOpen((currentIsOpen) => !currentIsOpen)
 	}
 
 	useEffect(() => {
-		const handler = (e: MouseEvent) => {
-			if (divRef.current && !divRef.current.contains(e.target)) {
+		const handler = (e) => {
+			if (!divRef.current) {
+				return
+			}
+			if (!divRef.current.contains(e.target)) {
 				setIsOpen(false)
 			}
 		}
