@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App.tsx"
-import { NavigationProvider } from "./context/navigation.tsx"
+import { NavigationProvider } from "./context/Navigation.tsx"
 
 const el = document.getElementById("root")
 const root = ReactDOM.createRoot(el)

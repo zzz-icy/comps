@@ -1,5 +1,4 @@
-import Accordion from "../components/Accordion"
-import "./index.css"
+import Accordion from "../components/Accordion.tsx"
 import React, { useState } from "react"
 function AccordionPage() {
 	const items = [

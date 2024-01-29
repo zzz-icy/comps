@@ -1,5 +1,4 @@
 import Dropdown, { Option } from "../components/Dropdown.tsx"
-import "./index.css"
 import React, { useState } from "react"
 function DropdownPage() {
 	const options = [
