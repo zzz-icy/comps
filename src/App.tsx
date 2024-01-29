@@ -1,6 +1,6 @@
 import Route from "./components/Route.tsx"
 import "./index.css"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import AccordionPage from "./pages/AccordionPage.tsx"
 import DropdownPage from "./pages/DropdownPage.tsx"
 import Link from "./components/Link.tsx"
