@@ -3,8 +3,8 @@ import React from "react"
 import Button from "../components/Button.tsx"
 function ButtonPage() {
 	return (
-		<div style={{}}>
-			<div style={{ display: "flex", flexDirection: "column", width: "200px" }}>
+		<div>
+			<div>
 				<Button
 					variation='primary'
 					shapeStyle='rounded'
@@ -13,22 +13,31 @@ function ButtonPage() {
 					<GoBell />
 					GoBell Button
 				</Button>
+			</div>
+			<div>
 				<Button
 					variation='secondary'
+					shapeStyle='rounded'
 					onMouseEnter={() => {
 						console.log("onMouseEnter")
 					}}
 				>
-					Button
+					Secondary Button
 				</Button>
+			</div>
+			<div>
 				<Button variation='success'>
 					<GoDatabase />
 					Button
 				</Button>
+			</div>
+			<div>
 				<Button variation='warning'>
 					<GoCloudDownload />
 					Button
 				</Button>
+			</div>
+			<div>
 				<Button
 					variation='danger'
 					shapeStyle='outline'

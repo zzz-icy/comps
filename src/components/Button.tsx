@@ -27,6 +27,9 @@ function Button({ children, variation, shapeStyle, ...rest }: ButtonProps) {
 	return (
 		<button
 			style={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
 				margin: "5px",
 				backgroundColor:
 					shapeStyle === "outline"
@@ -39,10 +42,7 @@ function Button({ children, variation, shapeStyle, ...rest }: ButtonProps) {
 				borderColor: getColorForType(variation),
 				borderWidth: "1px",
 				padding: "6px 12px",
-				borderRadius: shapeStyle === "rounded" ? "4px" : "0px",
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "center",
+				borderRadius: shapeStyle === "rounded" ? "10px" : "0px",
 			}}
 			{...rest}
 		>

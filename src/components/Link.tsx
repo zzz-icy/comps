@@ -5,9 +5,10 @@ interface Props {
 	to: string
 	children: React.ReactNode
 	styleName?: string
+	activeStyle?: string
 }
-function Link({ to, children, styleName }: Props) {
-	const { navigateTo } = useNavigation()
+function Link({ to, children, styleName, activeStyle }: Props) {
+	const { navigateTo, currentPath } = useNavigation()
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		console.log("e", e)
 		if (e.metaKey || e.ctrlKey) {
@@ -24,7 +25,9 @@ function Link({ to, children, styleName }: Props) {
 		<a
 			href={to} // for the browser to handle, e.g. open in a new tab in Chrome
 			onClick={handleClick}
-			className={`panel ${styleName}`}
+			className={`${styleName} ${
+				currentPath === to ? "active-path" : undefined
+			}`}
 		>
 			{children}
 		</a>

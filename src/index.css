@@ -2,3 +2,15 @@ button > svg {
 	/* with an immediate child of svg */
 	margin-right: 5px;
 }
+.container {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 16px;
+	margin-top: 16px;
+}
+.subcontainer {
+	grid-column: span 5 / span 5;
+}

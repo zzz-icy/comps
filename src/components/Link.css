@@ -1,3 +1,8 @@
 a {
 	color: rgb(59 130 246);
 }
+.active-path {
+	font-weight: bold;
+	border-left: 4px solid rgb(59 130 246);
+	padding-left: 8px;
+}
