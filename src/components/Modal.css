@@ -1,16 +1,24 @@
 .background {
-	position: absolute;
+	position: fixed;
 	inset: 0px;
 	background-color: rgb(209 213 219);
 	opacity: 0.8;
 }
 
 .body {
-	position: absolute;
+	position: fixed;
 	inset: 160px;
 	background-color: white;
 	padding: 40px;
 }
-.modal {
-	/* position: relative; */
+
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+.action {
+	display: flex;
+	justify-content: flex-end;
 }
