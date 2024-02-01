@@ -7,7 +7,7 @@ function ModalPage() {
 		setShowModal(!showModal)
 	}
 	return (
-		<div style={{}}>
+		<div style={{ position: "relative" }}>
 			<Button
 				variation='primary'
 				// shapeStyle='rounded'

@@ -5,9 +5,12 @@
 	opacity: 0.8;
 }
 
-.modal {
+.body {
 	position: absolute;
 	inset: 160px;
 	background-color: white;
 	padding: 40px;
+}
+.modal {
+	/* position: relative; */
 }
