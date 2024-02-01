@@ -5,6 +5,7 @@ import AccordionPage from "./pages/AccordionPage.tsx"
 import DropdownPage from "./pages/DropdownPage.tsx"
 import ButtonPage from "./pages/ButtonPage.tsx"
 import Sidebar from "./components/Sidebar.tsx"
+import ModalPage from "./pages/ModalPage.tsx"
 
 function App() {
 	return (
@@ -19,6 +20,9 @@ function App() {
 				</Route>
 				<Route path={"/button"}>
 					<ButtonPage />
+				</Route>
+				<Route path={"/modal"}>
+					<ModalPage />
 				</Route>
 			</div>
 		</div>
