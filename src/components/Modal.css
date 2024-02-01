@@ -1,0 +1,13 @@
+.background {
+	position: absolute;
+	inset: 0px;
+	background-color: rgb(209 213 219);
+	opacity: 0.8;
+}
+
+.modal {
+	position: absolute;
+	inset: 160px;
+	background-color: white;
+	padding: 40px;
+}

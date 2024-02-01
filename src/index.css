@@ -2,6 +2,7 @@ button > svg {
 	/* with an immediate child of svg */
 	margin-right: 5px;
 }
+
 .container {
 	width: 100%;
 	margin-left: auto;

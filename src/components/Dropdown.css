@@ -1,3 +1,12 @@
+.dropdown {
+	position: relative;
+	width: 100%;
+}
+
+.sub-container {
+	/* position: absolute; */
+	/* top: 100%; */
+}
 .option {
 	padding: 4px;
 }
@@ -6,17 +15,10 @@
 	border-radius: 4px;
 	cursor: pointer;
 }
-.container {
-	position: relative;
-	width: 192px;
-}
+
 .header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	cursor: pointer;
-}
-.sub-container {
-	position: absolute;
-	top: 100%;
 }

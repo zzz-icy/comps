@@ -4,10 +4,10 @@ import Button from "../components/Button.tsx"
 function ModalPage() {
 	const [showModal, setShowModal] = useState<boolean>(false)
 	const handleClick = () => {
-		setShowModal(true)
+		setShowModal(!showModal)
 	}
 	return (
-		<div style={{ display: "flex" }}>
+		<div style={{}}>
 			<Button
 				variation='primary'
 				// shapeStyle='rounded'
@@ -15,6 +15,7 @@ function ModalPage() {
 			>
 				Open Modal
 			</Button>
+			{showModal && <Modal />}
 		</div>
 	)
 }

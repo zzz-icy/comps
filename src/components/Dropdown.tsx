@@ -58,7 +58,7 @@ function Dropdown({ options, selection, onSelect }: Props) {
 		})
 	}
 	return (
-		<div className='container'>
+		<div className='dropdown'>
 			<Panel
 				styleName='header'
 				onClick={handleClick}
