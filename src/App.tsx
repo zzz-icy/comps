@@ -6,6 +6,7 @@ import DropdownPage from "./pages/DropdownPage.tsx"
 import ButtonPage from "./pages/ButtonPage.tsx"
 import Sidebar from "./components/Sidebar.tsx"
 import ModalPage from "./pages/ModalPage.tsx"
+import TablePage from "./pages/TablePage.tsx"
 
 function App() {
 	return (
@@ -23,6 +24,9 @@ function App() {
 				</Route>
 				<Route path={"/modal"}>
 					<ModalPage />
+				</Route>
+				<Route path={"/table"}>
+					<TablePage />
 				</Route>
 			</div>
 		</div>
