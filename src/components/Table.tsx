@@ -1,4 +1,5 @@
 import React from "react"
+import "./Table.css"
 interface Props {
 	data: { name: string; color: string; score: number }[]
 }
@@ -19,7 +20,15 @@ function Table({ data }: Props) {
 					return (
 						<tr key={item.name}>
 							<td>{item.name}</td>
-							<td>{item.color}</td>
+							<td>
+								<div
+									style={{
+										backgroundColor: item.color,
+										margin: 5,
+										padding: 15,
+									}}
+								></div>
+							</td>
 							<td>{item.score}</td>
 						</tr>
 					)

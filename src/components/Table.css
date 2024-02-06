@@ -1,0 +1,16 @@
+table {
+	border-collapse: collapse;
+	/* table-layout: auto; */
+	border-spacing: 10px 10px;
+}
+
+td {
+	padding: 12px;
+}
+
+tr {
+	border-bottom-style: solid;
+	border-bottom-color: lightgray;
+	border-bottom-width: 1px;
+	padding: 12px;
+}
