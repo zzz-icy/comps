@@ -1,4 +1,4 @@
-import Table from "../components/Table.tsx"
+import SortableTable from "../components/SortableTable.tsx"
 import React from "react"
 const fruits = [
 	{ name: "Orange", color: "rgb(249 115 22)", score: 5 },
@@ -32,6 +32,9 @@ function TablePage() {
 		{
 			label: "Score",
 			render: (fruit: Fruit) => fruit.score,
+
+			// inside sortable table
+			header: () => <th onClick={() => null}>Score</th>,
 			sort: (a, b) => {},
 		},
 	]
@@ -41,7 +44,7 @@ function TablePage() {
 
 	return (
 		<div>
-			<Table
+			<SortableTable
 				config={config}
 				data={fruits}
 				keyFn={keyFn}
