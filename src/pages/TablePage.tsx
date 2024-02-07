@@ -32,15 +32,19 @@ function TablePage() {
 		{
 			label: "Score",
 			render: (fruit: Fruit) => fruit.score,
-			// sort: (a, b) => {},
+			sort: (a, b) => {},
 		},
 	]
+	const keyFn = (fruit: Fruit) => {
+		return fruit.name
+	}
 
 	return (
 		<div>
 			<Table
 				config={config}
 				data={fruits}
+				keyFn={keyFn}
 			/>
 		</div>
 	)

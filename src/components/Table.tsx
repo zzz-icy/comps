@@ -5,12 +5,13 @@ interface Props {
 	config: {
 		label: string
 		render: (data: Fruit) => any
-		// sort?: (a: number, b: number) => void
+		sort?: (a: number, b: number) => void
 	}[]
 	data: Fruit[]
+	keyFn: (data: any) => string
 }
 
-function Table({ config, data }: Props) {
+function Table({ config, data, keyFn }: Props) {
 	return (
 		<table>
 			<thead>
@@ -23,11 +24,11 @@ function Table({ config, data }: Props) {
 
 			<tbody>
 				{/* single cell or single column */}
-				{data.map((fruit, index) => {
+				{data.map((rowData, index) => {
 					return (
-						<tr key={fruit.name}>
+						<tr key={keyFn(rowData)}>
 							{config.map((cell, index) => {
-								return <td>{cell.render(fruit)}</td>
+								return <td key={cell.label}>{cell.render(rowData)}</td>
 							})}
 						</tr>
 					)
