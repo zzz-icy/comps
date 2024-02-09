@@ -10,7 +10,6 @@ interface Props {
 function Link({ to, children, styleName, activeStyle }: Props) {
 	const { navigateTo, currentPath } = useNavigation()
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-		console.log("e", e)
 		if (e.metaKey || e.ctrlKey) {
 			return
 		}

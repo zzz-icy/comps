@@ -1,77 +1,19 @@
-import React, { useState } from "react"
+import React from "react"
 import Table, { TableProps } from "./Table.tsx"
-import { TableConfig } from "../pages/TablePage.tsx"
 import { GoArrowSmallDown, GoArrowSmallUp } from "react-icons/go"
+
 import "./Table.css"
-type SortOrder = null | "asc" | "desc"
+import useSort from "../hooks/use-sort.tsx"
+import { TableConfig } from "../pages/TablePage.tsx"
+export type SortOrder = null | "asc" | "desc"
 
 interface Props extends TableProps {}
 function SortableTable(props: Props) {
 	const { config, data } = props
-	const [sortBy, setSortBy] = useState<TableConfig["label"] | null>(null)
-	const [sortOrder, setSortOrder] = useState<SortOrder>(null)
-	const handleClick = (label) => {
-		if (sortBy && label !== sortBy) {
-			setSortOrder("asc")
-			setSortBy(label)
-			return
-		}
-
-		if (sortOrder === null) {
-			setSortOrder("asc")
-			setSortBy(label)
-		} else if (sortOrder === "asc") {
-			setSortOrder("desc")
-			setSortBy(label)
-		} else if (sortOrder === "desc") {
-			setSortOrder(null)
-			setSortBy(null)
-		}
-	}
-
-	let sortedData = [...data]
-	if (sortBy && sortOrder) {
-		const { sortValue } = config.find((column) => column.label === sortBy) || {}
-		if (!!sortValue) {
-			sortedData = [...data].sort((a, b) => {
-				const valueA = sortValue(a)
-				const valueB = sortValue(b)
-				const reverseOrder = sortOrder === "asc" ? 1 : -1
-				if (typeof valueA === "string") {
-					return valueA.localeCompare(valueB) * reverseOrder
-				} else {
-					return (valueA - valueB) * reverseOrder
-				}
-			})
-		}
-	}
-	const getIcons = (
-		label: string,
-		sortBy: TableConfig["label"] | null,
-		sortOrder: SortOrder
-	) => {
-		const bothIcons = (
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "column",
-				}}
-			>
-				<GoArrowSmallUp /> <GoArrowSmallDown />
-			</div>
-		)
-		if (label !== sortBy) {
-			return bothIcons
-		}
-
-		if (sortOrder === "asc") {
-			return <GoArrowSmallUp />
-		} else if (sortOrder === "desc") {
-			return <GoArrowSmallDown />
-		} else if (sortOrder === null) {
-			return bothIcons
-		}
-	}
+	const { sortedData, setSortColumn, sortBy, sortOrder } = useSort({
+		config,
+		data,
+	})
 	const updatedConfig = config.map((column: TableConfig) => {
 		if (!column.sortValue) {
 			return column
@@ -80,7 +22,7 @@ function SortableTable(props: Props) {
 			...column,
 			header: () => (
 				<th
-					onClick={() => handleClick(column.label)}
+					onClick={() => setSortColumn(column.label)}
 					className='label-header'
 				>
 					<div
@@ -97,7 +39,6 @@ function SortableTable(props: Props) {
 			),
 		}
 	})
-
 	return (
 		<Table
 			{...props}
@@ -106,4 +47,33 @@ function SortableTable(props: Props) {
 		/>
 	)
 }
+
+const getIcons = (
+	label: string,
+	sortBy: TableConfig["label"] | null,
+	sortOrder: SortOrder
+) => {
+	const bothIcons = (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+			}}
+		>
+			<GoArrowSmallUp /> <GoArrowSmallDown />
+		</div>
+	)
+	if (label !== sortBy) {
+		return bothIcons
+	}
+
+	if (sortOrder === "asc") {
+		return <GoArrowSmallUp />
+	} else if (sortOrder === "desc") {
+		return <GoArrowSmallDown />
+	} else if (sortOrder === null) {
+		return bothIcons
+	}
+}
+
 export default SortableTable
