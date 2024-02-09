@@ -11,6 +11,12 @@ function SortableTable(props: Props) {
 	const [sortBy, setSortBy] = useState<TableConfig["label"] | null>(null)
 	const [sortOrder, setSortOrder] = useState<SortOrder>(null)
 	const handleClick = (label) => {
+		if (sortBy && label !== sortBy) {
+			setSortOrder("asc")
+			setSortBy(label)
+			return
+		}
+
 		if (sortOrder === null) {
 			setSortOrder("asc")
 			setSortBy(label)
