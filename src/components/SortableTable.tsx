@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import Table, { TableProps } from "./Table.tsx"
 import { TableConfig } from "../pages/TablePage.tsx"
-
+import { GoArrowSmallDown, GoArrowSmallUp } from "react-icons/go"
+import "./Table.css"
 type SortOrder = null | "asc" | "desc"
 
 interface Props extends TableProps {}
@@ -38,7 +39,33 @@ function SortableTable(props: Props) {
 			})
 		}
 	}
+	const getIcons = (
+		label: string,
+		sortBy: TableConfig["label"] | null,
+		sortOrder: SortOrder
+	) => {
+		const bothIcons = (
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+				}}
+			>
+				<GoArrowSmallUp /> <GoArrowSmallDown />
+			</div>
+		)
+		if (label !== sortBy) {
+			return bothIcons
+		}
 
+		if (sortOrder === "asc") {
+			return <GoArrowSmallUp />
+		} else if (sortOrder === "desc") {
+			return <GoArrowSmallDown />
+		} else if (sortOrder === null) {
+			return bothIcons
+		}
+	}
 	const updatedConfig = config.map((column: TableConfig) => {
 		if (!column.sortValue) {
 			return column
@@ -46,8 +73,20 @@ function SortableTable(props: Props) {
 		return {
 			...column,
 			header: () => (
-				<th onClick={() => handleClick(column.label)}>
-					{column.label} IS SORTABLE
+				<th
+					onClick={() => handleClick(column.label)}
+					className='label-header'
+				>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+						}}
+					>
+						{getIcons(column.label, sortBy, sortOrder)}
+						{column.label}
+					</div>
 				</th>
 			),
 		}

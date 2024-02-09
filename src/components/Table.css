@@ -14,3 +14,10 @@ tr {
 	border-bottom-width: 1px;
 	padding: 12px;
 }
+
+.label-header {
+	cursor: pointer;
+}
+.label-header:hover {
+	background-color: rgb(243 244 246);
+}
