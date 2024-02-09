@@ -1,13 +1,8 @@
 import React, { Fragment, ReactNode } from "react"
 import "./Table.css"
-import { Fruit } from "../pages/TablePage"
+import { Fruit, TableConfig } from "../pages/TablePage"
 export interface TableProps {
-	config: {
-		label: string
-		render: (data: Fruit) => any
-		sort?: (a: number, b: number) => void
-		header?: () => ReactNode
-	}[]
+	config: TableConfig[]
 	data: Fruit[]
 	keyFn: (data: any) => string
 }

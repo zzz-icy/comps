@@ -1,5 +1,5 @@
 import SortableTable from "../components/SortableTable.tsx"
-import React from "react"
+import React, { ReactNode } from "react"
 const fruits = [
 	{ name: "Orange", color: "rgb(249 115 22)", score: 5 },
 	{ name: "Apple", color: "rgb(252 165 165)", score: 5 },
@@ -11,11 +11,20 @@ export interface Fruit {
 	color: string
 	score: number
 }
+
+export interface TableConfig {
+	label: string
+	render: (data: Fruit) => any
+	sortValue?: (a: Fruit) => any
+	header?: () => ReactNode
+}
+
 function TablePage() {
 	const config = [
 		{
 			label: "Name",
 			render: (fruit: Fruit) => fruit.name,
+			sortValue: (fruit) => fruit.name,
 		},
 		{
 			label: "Color",
@@ -32,10 +41,7 @@ function TablePage() {
 		{
 			label: "Score",
 			render: (fruit: Fruit) => fruit.score,
-
-			// inside sortable table
-			header: () => <th onClick={() => null}>Score</th>,
-			sort: (a, b) => {},
+			sort: (fruit) => fruit.score,
 		},
 	]
 	const keyFn = (fruit: Fruit) => {
