@@ -2,11 +2,16 @@ import React from "react"
 type ButtonType = "primary" | "secondary" | "success" | "warning" | "danger"
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	children: any
-	variation: ButtonType
+	variation?: ButtonType
 	shapeStyle?: "outline" | "rounded"
 }
 
-function Button({ children, variation, shapeStyle, ...rest }: ButtonProps) {
+function Button({
+	children,
+	variation = "primary",
+	shapeStyle,
+	...rest
+}: ButtonProps) {
 	const getColorForType = (buttonType: ButtonType) => {
 		switch (buttonType) {
 			case "primary":
