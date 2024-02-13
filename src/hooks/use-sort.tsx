@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { TableConfig } from "../pages/TablePage"
 import { SortOrder } from "../components/SortableTable"
 
