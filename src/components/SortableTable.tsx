@@ -1,7 +1,6 @@
 import React from "react"
 import Table, { TableProps } from "./Table.tsx"
 import { GoArrowSmallDown, GoArrowSmallUp } from "react-icons/go"
-
 import "./Table.css"
 import useSort from "../hooks/use-sort.tsx"
 import { TableConfig } from "../pages/TablePage.tsx"
